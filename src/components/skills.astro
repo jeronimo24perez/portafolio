@@ -1,0 +1,35 @@
+---
+interface Skill {
+    name: string;
+    class: string;
+}
+
+const skills: Skill[] = [
+    { name: "Python", class: "devicon-python-plain colored" },
+    { name: "React", class: "devicon-react-original colored" },
+    { name: "Redux", class: "devicon-redux-original colored" },
+    { name: "Javascript", class: "devicon-javascript-plain colored" },
+    { name: "MongoDB", class: "devicon-mongodb-plain colored" },
+    { name: "FastAPI", class: "devicon-fastapi-plain colored" },
+    { name: "NodeJS", class: "devicon-nodejs-plain colored" },
+    { name: "Express", class: "devicon-express-original" },
+    { name: "HTML", class: "devicon-html5-plain colored" },
+    { name: "CSS", class: "devicon-css3-plain colored" },
+    { name: "Git", class: "devicon-git-plain colored" },
+    { name: "Github", class: "devicon-github-original" },
+    { name: "Typescript", class: "devicon-typescript-plain colored" },
+    { name: "Linux", class: "devicon-linux-plain" },
+    { name: "Astro", class: "devicon-astro-plain colored" }
+]
+---
+<section class="skills" id="skills">
+    <h2>Skills</h2>
+    <div class="skills-container">
+        {skills.map(skill => (
+                <div class="skill-icon">
+                    <i class={skill.class}></i>
+                    {skill.name}
+                </div>
+        ))}
+    </div>
+</section>

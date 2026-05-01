@@ -1,4 +1,18 @@
 ---
+import '../styles/main.css'
+import {PanelsTopLeft, FileUser, Contact, SquareTerminal , ClipboardMinus, Menu, X } from '@lucide/astro'
+import {Image} from 'astro:assets'
+import bannerIconOne from '../assets/banner-icon-first.png'
+import mongoCard from '../assets/mongo-card.png'
+import pythonCard from '../assets/python-card.png'
+import webImage from '../assets/web-image.png'
+import github from '../../public/icons/github.svg'
+import linkedin from '../../public/icons/linkedin.svg'
+import Projects from '../components/projectGrid.astro'
+import Footer from "../components/footer.astro";
+import Skills from "../components/skills.astro";
+import ContactComponent from "../components/contact.astro";
+import wp from '../../public/icons/whatsapp.svg'
 
 ---
 
@@ -9,9 +23,122 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+		<title>Jeronimo Perez</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+	<a href="https://api.whatsapp.com/send?phone=573042583510&text=¡Hola Jeronimo! Vi tu portafolio y me gustaría contactarte." target="_blank" class="wp">
+		<Image src={wp} alt="wp" />
+	</a>
+	<nav class="glass iceberg-regular">
+		<a href="#">
+			<div class="logo">
+				<h4> <b>&lt;JP&gt;</b> </h4>
+			</div>
+		</a>
+
+		<button class="menu-toggle" id="menu-toggle">
+			<Menu class="menu-icon" />
+			<X class="close-icon" />
+		</button>
+
+		<ul id="nav-menu">
+			<a href="#projects"><li><PanelsTopLeft /> Proyectos</li></a>
+			<a href="#skills"><li><SquareTerminal  /> Habilidades</li></a>
+
+			<a href="#about"><li><FileUser /> Acerca de mi</li></a>
+			<a href="#contact"><li><Contact /> Contacto</li></a>
+		</ul>
+	</nav>
+		<header>
+
+			<section class="banner">
+				<div class="row row-banner">
+					<h1>Jeronimo Perez</h1><br/>
+					<h2>Desarrollador Web <br /> <b>FULLSTACK</b></h2><br/>
+
+					<p>Desarrollo interfaces modernas y funcionales con visión Full Stack. Me apasiona el Frontend: la experiencia de usuario, el rendimiento y los detalles visuales que hacen la diferencia.</p>
+					<a href="/public/files/hv-jeronimoPerezCañas.pdf" download class="button cv">
+					<ClipboardMinus />	Descargar CV</a>
+					<div class="icon-container">
+						<a class="github-icon" target="_blank" href="https://github.com/jeronimo24perez" >
+							<Image src={github} class="icon " alt="github" />
+						</a>
+						<a >
+							<Image src={linkedin} class="icon" alt="linkedin" />
+						</a>
+					</div>
+
+				</div>
+				<div class="row">
+
+					<div class="banner-right">
+						<div class="banner-cards">
+							<Image src={pythonCard} class="python-card" alt="py" />
+							<Image src={mongoCard} class="mongo-card" alt="mongo" />
+
+						</div>
+						<Image src={webImage} class="web-image" alt="icono" />
+						<Image src={bannerIconOne} class="banner-image-one" alt="icono" />
+
+
+					</div>
+
+				</div>
+			</section>
+		</header>
+		<main>
+			<section class="projects" id="projects">
+				<h2>Proyectos</h2>
+				<Projects />
+			</section>
+		</main>
+		<Skills />
+		<section class="about" id="about">
+			<div class="about-container glass">
+				<h2>Acerca de mi</h2><br/><br/>
+
+				<p>Soy <b> desarrollador fullstack </b>enfocado en crear aplicaciones <b>web</b> modernas y funcionales. <br/> Trabajo con tecnologías como React, TypeScript, JavaScript, Python, FastAPI, Node.js y MongoDB, desarrollando tanto frontend como backend.
+					Me gusta construir proyectos reales, mejorar constantemente mi código y aprender nuevas herramientas que aporten valor.<b> Busco crear soluciones limpias</b>, útiles y bien estructuradas mientras sigo creciendo profesionalmente.</p>
+			</div>
+
+		</section>
+		<ContactComponent />
+		<Footer />
+
+	<script>
+		import HoverBanner from '../utils/hoverBanner.ts'
+		import HoverCard from "../utils/hoverCard.ts";
+		import submit from "../utils/submit.ts";
+		const firstHover = document.getElementsByClassName('banner-image-one')[0] as HTMLImageElement;
+		const chainHover = document.getElementsByClassName('web-image')[0] as HTMLImageElement;
+		HoverBanner({firstHover, chainHover})
+
+		const cards = Array.from(document.getElementsByClassName('project-card'))
+		const buttons = Array.from(document.getElementsByClassName('card-button'))
+		HoverCard({ cards, buttons})
+		const submitButton = document.getElementsByClassName('contact-button')[0]
+		submitButton.addEventListener("click", (e)=>{
+			e.preventDefault()
+			submit()
+		})
+
+		const menuToggle = document.getElementById('menu-toggle');
+		const navMenu = document.getElementById('nav-menu');
+
+		menuToggle?.addEventListener('click', () => {
+			navMenu?.classList.toggle('active');
+			menuToggle?.classList.toggle('active');
+		});
+
+		// Cerrar menú al hacer click en un enlace
+		const navLinks = navMenu?.querySelectorAll('a');
+		navLinks?.forEach(link => {
+			link.addEventListener('click', () => {
+				navMenu?.classList.remove('active');
+				menuToggle?.classList.remove('active');
+			});
+		});
+	</script>
 	</body>
 </html>

@@ -12,6 +12,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.1.10"
+    "@lucide/astro": "^1.14.0",
+    "astro": "^6.1.10",
+    "sweetalert2": "^11.26.24"
   }
 }

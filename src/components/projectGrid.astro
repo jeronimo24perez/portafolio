@@ -1,0 +1,140 @@
+---
+import type {Project} from '../models/project.ts';
+import {Image} from 'astro:assets'
+import x from '../assets/clon-de-x.png'
+import starwars from '../assets/starwars.png'
+import gorrasApp from '../assets/gorras-app.png'
+import crud from '../assets/crudImage.png'
+import backendX from '../assets/backendX.png'
+import backendCrud from '../assets/backendCrud.png'
+import backendGorras from '../assets/gorrasBackend.png'
+
+const projects: Project[] = [
+    {
+        id: 1,
+        name: "Clon de X",
+        tech: ["devicon-css3-plain colored","devicon-react-original colored  ", "devicon-typescript-plain colored", "devicon-redux-original colored ", "devicon-python-plain-wordmark  ", "devicon-fastapi-plain colored ", "devicon-mongodb-plain colored "],
+        description: "En este proyecto he construido desde 0 un clon de X, con usuarios, autenticacion, follows, posts, likes y mas cosas. Usando  css, react con typescript, redux-toolkit, python con fastapi y mongo db",
+        link: "https://x-app-olive.vercel.app/",
+        code: "https://github.com/jeronimo24perez/x-app",
+        image: x
+    },
+    {
+        id: 2,
+        name: "Blog de Star Wars",
+        tech: ["devicon-react-original colored  ", "devicon-css3-plain colored", "devicon-javascript-plain colored"],
+        description: "En este proyecto construi un blog de Star Wars, donde muestro juegos, personajes y algunas historias de la saga, con un diseño impecable",
+        link: "https://star-wars-two-sigma.vercel.app/",
+        code: "https://github.com/jeronimo24perez/starWars",
+        image: starwars
+    },
+    {
+        id: 3,
+        name: "Aplicacion To Do",
+        tech: ["devicon-react-original colored  ", "devicon-css3-plain colored", "devicon-javascript-plain colored", "devicon-materializecss-plain colored", "devicon-nodejs-plain colored ", "devicon-express-original", "devicon-mongodb-plain colored"],
+        description: "En este proyecto realice una aplicacion de tareas, un CRUD(create read update delete) con tecnologias como React, CSS, Javascript, MaterializeCSS,  nodeJS, exprees y mongoDB",
+        link: "https://crud-frontend-sooty.vercel.app/",
+        code: "https://github.com/jeronimo24perez/crudFrontend",
+        image: crud
+    },{
+        id: 4,
+        name: "E-commerce Gorras",
+        tech: ["devicon-react-original colored  ", "devicon-css3-plain colored", "devicon-javascript-plain colored", "devicon-bootstrap-plain colored", "devicon-nodejs-plain colored ", "devicon-express-original", "devicon-mongodb-plain colored"],
+        description: "En este proyecto realice un E-commerce de gorras, usando tecnologias como react, Javascript bootstrap, css, express, nodeJS y mongoDB",
+        link: "https://gorras-app.vercel.app/",
+        code: "https://github.com/jeronimo24perez/gorrasApp",
+        image: gorrasApp
+    }
+]
+
+const backend: Project[] = [
+    {
+        id: 5,
+        name: "Backend del clon de X",
+        tech: ["devicon-python-plain-wordmark  ", "devicon-fastapi-plain colored ","devicon-mongodb-plain colored"],
+        description: "En este proyecto hice la API para el clon de X utilizando Python con FastAPI y mongoDB como base de datos",
+        code: "https://github.com/jeronimo24perez/x-backend",
+        image: backendX
+    },
+    {
+        id: 6,
+        name: "Backend Aplicacion To Do",
+        tech: ["devicon-nodejs-plain colored ", "devicon-express-original", "devicon-mongodb-plain colored"],
+        description: "API REST desarrollada con Node.js, Express y MongoDB para la gestión de tareas, incluyendo operaciones CRUD completas.",
+        code: "https://github.com/jeronimo24perez/crudBackend",
+        image: backendCrud
+    },
+    {
+        id: 7,
+        name: "Backend E-commerce Gorras",
+        tech: ["devicon-nodejs-plain colored ", "devicon-express-original", "devicon-mongodb-plain colored"],
+        description: "Servidor backend para el e-commerce de gorras, gestionando productos y persistencia de datos con MongoDB.",
+        code: "https://github.com/jeronimo24perez/backend-gorras-app",
+        image: backendGorras
+    }
+
+]
+
+---
+
+{
+
+    projects.map((project) =>(
+    <div class="project-card glass">
+        <Image src={project.image } alt={project.name} class="project-img" />
+        <div class="card-body">
+            <h3>{project.name}</h3>
+            <p>{project.description}</p> <br/>
+
+            <div class="techs">
+                {project.tech.map((tech) => (
+                        <i class={tech}></i>
+
+                ))}
+            </div> <br/>
+            <div class="card-footer">
+                <a href={project.link} target="_blank" class="button card-button" rel="noopener noreferrer">
+                    Ver demo
+                </a>
+
+                <a href={project.code} target="_blank" class="button card-button" rel="noopener noreferrer">
+                    Ver codigo
+                </a>
+            </div>
+
+
+        </div>
+
+    </div>
+        ))}
+
+<div class="separator-container">
+    <h2 >Proyectos Backend</h2>
+
+</div>
+{backend.map((project) =>(
+    <div class="project-card glass">
+        <Image src={project.image } alt={project.name} class="project-img" />
+        <div class="card-body">
+            <h3>{project.name}</h3>
+            <p>{project.description}</p> <br/>
+
+            <div class="techs">
+                {project.tech.map((tech) => (
+                        <i class={tech}></i>
+
+                ))}
+            </div> <br/>
+            <div class="card-footer">
+                <a href={project.code} target="_blank"  class="button card-button" rel="noopener noreferrer">
+                    Ver demo
+                </a>
+                <a href={project.code} target="_blank"  class="button card-button" rel="noopener noreferrer">
+                    Ver codigo
+                </a>
+
+            </div>
+        </div>
+    </div>
+            ))
+    }
