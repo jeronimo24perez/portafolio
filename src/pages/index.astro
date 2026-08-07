@@ -13,6 +13,7 @@ import Footer from "../components/footer.astro";
 import Skills from "../components/skills.astro";
 import ContactComponent from "../components/contact.astro";
 import wp from '../../public/icons/whatsapp.svg'
+import Analytics from '@vercel/analytics/astro'
 
 ---
 
@@ -25,6 +26,7 @@ import wp from '../../public/icons/whatsapp.svg'
 		<meta name="generator" content={Astro.generator} />
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 		<title>Jeronimo Perez</title>
+		<Analytics />
 	</head>
 	<body>
 	<a href="https://api.whatsapp.com/send?phone=573042583510&text=¡Hola Jeronimo! Vi tu portafolio y me gustaría contactarte." target="_blank" class="wp">
